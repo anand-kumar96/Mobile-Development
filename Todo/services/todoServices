@@ -1,0 +1,15 @@
+const todoModel = require("../models/todoModel")
+
+const createNewTodo = async(userId,title,description)=>{
+     await todoModel.create({userId,title,description})
+}
+const findAndDeleteTodo = async(todoId)=>{
+     return await todoModel.findOneAndDelete(todoId);
+}
+const findTodo = async(_id)=>{
+     return await todoModel.findOne({_id});
+}
+const updateTodoData = async(userId,title,description)=>{
+     return await todoModel.findOneAndUpdate({userId,title,description})
+}
+module.exports = {createNewTodo,findAndDeleteTodo,findTodo,updateTodoData}
